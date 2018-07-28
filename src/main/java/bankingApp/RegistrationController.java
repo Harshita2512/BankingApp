@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistrationController {
 	
 	@Autowired
-	@Qualifier("dbConn")
+	@Qualifier("hibernateConnImpl")
 	DatabaseInf jdbc;
 
 	

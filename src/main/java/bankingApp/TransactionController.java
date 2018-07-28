@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class TransactionController {
 	
 	@Autowired
-	@Qualifier("dbConn")
+	@Qualifier("hibernateConnImpl")
 	DatabaseInf jdbc;
 
 

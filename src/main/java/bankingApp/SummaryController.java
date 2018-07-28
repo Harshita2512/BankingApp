@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class SummaryController{
 	
 	@Autowired
-	@Qualifier("dbConn")
+	@Qualifier("hibernateConnImpl")
 	DatabaseInf jdbc;
 
 	
