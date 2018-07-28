@@ -67,6 +67,8 @@ button:hover {
 
 </style>
 <script type="text/javascript">
+
+
 function validation() {
 	var password = document.getElementById("password").value;
 	var rePassword = document.getElementById("rePassword").value;
@@ -125,7 +127,7 @@ return true;
 			<input type="password"placeholder="Re Enter new password" name="rePassword" id="rePassword">
 
 
-			<button type="submit">Submit</button>
+			<button type="submit" onSubmit="validation()">Submit</button>
 </form>
 
 		</div>

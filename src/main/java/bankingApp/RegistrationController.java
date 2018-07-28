@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
+	
+	@Autowired
+	@Qualifier("dbConn")
+	DatabaseInf jdbc;
+
 	
 	@RequestMapping(value="/registration", method=RequestMethod.POST)
 	protected ModelAndView registration(HttpServletRequest req) throws ServletException, IOException {
@@ -22,7 +29,7 @@ public class RegistrationController {
 		String password = req.getParameter("password");
 		String phoneNumber = req.getParameter("phoneNumber");
 		
-		JdbcConn jdbc = new JdbcConn();
+		
 		Customer c = new Customer();
 		c.setFirstName(firstName);
 		c.setLastName(lastName);

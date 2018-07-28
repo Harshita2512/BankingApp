@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TransactionController {
+	
+	@Autowired
+	@Qualifier("dbConn")
+	DatabaseInf jdbc;
+
 
 	@RequestMapping(value="/transaction", method=RequestMethod.POST)
 	protected ModelAndView transaction(HttpServletRequest req) throws ServletException, IOException {
@@ -20,8 +27,7 @@ public class TransactionController {
 		String amountValue = req.getParameter("amount");
 		String senderEmail = (String) req.getSession().getAttribute("email");
 
-		JdbcConn jdbc = new JdbcConn();
-
+	
 		AccountInfo fromAccount = jdbc.getAccountInfo(senderEmail);
 		double amount = Double.parseDouble(amountValue);
 		ModelAndView mw = new ModelAndView();

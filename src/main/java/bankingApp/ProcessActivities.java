@@ -3,10 +3,17 @@ package bankingApp;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class ProcessActivities {
+	@Autowired
+	@Qualifier("dbConn")
+	DatabaseInf jdbc;
 
 	public void process() {
-		JdbcConn jdbc = new JdbcConn();
+		
+		
 
 		ArrayList<Customer> customers = jdbc.getCustomers();
 		for(Customer c : customers ) {

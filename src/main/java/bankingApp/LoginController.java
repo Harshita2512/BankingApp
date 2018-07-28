@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +22,8 @@ public class LoginController {
 	private HttpSession httpSession;
 
 	@Autowired
-	JdbcConn jdbcConn;
+	@Qualifier("hibernateConnImpl")
+	DatabaseInf jdbcConn;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	protected ModelAndView login(String email, String password) throws ServletException, IOException {
